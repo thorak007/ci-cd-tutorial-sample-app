@@ -1,9 +1,8 @@
 FROM ubuntu:20.04
 
-RUN apt-get update && \
-    apt-get -y upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -yq libpq-dev gcc python3.8 python3-pip --fix-missing && \
-    apt-get clean
+RUN apt-get update && apt-get -y upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq libpq-dev gcc python3.8 python3-pip --fix-missing
+RUN apt-get clean
 
 WORKDIR /sample-app
 
