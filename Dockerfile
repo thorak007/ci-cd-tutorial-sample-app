@@ -1,15 +1,17 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -yq libpq-dev gcc python3.8 python3-pip && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq libpq-dev gcc python3.8 python3-pip --fix-missing && \
     apt-get clean
 
 WORKDIR /sample-app
 
 COPY . /sample-app/
 
-RUN pip3 install -r requirements.txt && \
+RUN pip3 install --upgrade pip setuptools && \
+    pip3 install markupsafe && \
+    pip3 install -r requirements.txt && \
     pip3 install -r requirements-server.txt
 
 ENV LC_ALL="C.UTF-8"
