@@ -1,8 +1,8 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq libpq-dev gcc python3.8 python3-pip --fix-missing
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq libpq gcc python3.8 python3-pip --fix-missing
 RUN apt-get clean
 
 WORKDIR /sample-app
