@@ -9,7 +9,9 @@ WORKDIR /sample-app
 
 COPY . /sample-app/
 
-RUN pip3 install -r requirements.txt && \
+RUN pip3 install --upgrade pip setuptools && \
+    pip3 install markupsafe && \
+    pip3 install -r requirements.txt && \
     pip3 install -r requirements-server.txt
 
 ENV LC_ALL="C.UTF-8"
